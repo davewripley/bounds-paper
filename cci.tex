@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\newcommand{\G}{\ensuremath{\Gamma}}
+\newcommand{\pcup}{\ensuremath{\sqcup}}
+\newcommand{\pos}[2]{\ensuremath{[#1:#2]}}
+
+\title{From conversation to inference, via consequence}
+\author{Greg Restall and David Ripley\\Universities of Melbourne and Connecticut\\greg@consequently.org and davewripley@gmail.com}
+\begin{document}
+
+\maketitle
+
+\section{Intro}
+
+In a number of papers (\cite{restall:tvpt, restall:cf2d, restall:adnct, ripley:pafc, ripley:bcw}, among others), we have applied an approach to consequence first explored in \cite{restall:mc}.
+Our goal here is to explore and make plain the underpinnings of this approach to consequence, and to use the approach to draw out the relations between conversational practice and correct deductive inference.
+
+\section{Conversation}
+
+This approach is based on the idea of {\em bounds} on {\em positions}.
+Both of these find their home in our conversational practices.
+
+\subsection{Positions}
+
+Scoreboard model.
+Need to track each other's assertions and denials.
+Need to do the same under suppositions.
+
+\subsection{Bounds}
+
+Some positions are {\em in bounds} and some not.
+Stance approach: this is a case where treating a position as out of bounds makes it so.
+(As usual, this doesn't prevent all mistakes, only a certain kind of systematic and widespread mistake.)
+
+\subsubsection{Social kinds}
+
+Being out of bounds is like being queen.
+It's a status that's had by someone in virtue of the role they play in certain social practices.
+
+\subsubsection{Treating as out of bounds} \label{treating}
+
+What, then, are the practices, and the roles in them, that make positions in bounds or not?
+Dismissal, reinterpretation, asking for clarification, reductio arguments. Others?
+
+\section{Consequence} \label{consequence}
+
+\subsection{Consequence from bounds}
+
+We adopt the strategy of \cite{restall:mc} for developing a consequence relation (multiple-premise, multiple-conclusion) from the bounds.
+This section, then, largely reviews things covered there (and elsewhere)
+
+
+\subsection{Structural properties}
+
+What can be said without appeal to any particular vocab?
+Clash between assertion and denial.
+
+
+\subsubsection{Subpositions}
+
+Look at ways in which the practices identified in \S\ref{treating} work to ensure that adding to something out of bounds leaves it out of bounds.
+
+\subsubsection{Extensibility} \label{cut}
+
+Extensibility discussion as in our other pieces.
+New way to frame it: a position's {\em extensions} are the in-bounds positions that contain it. 
+Given closure principles on bounds, we can describe the maximum closed reduction to a position's extensions that doesn't allow for $A$ to be denied.
+Question: does adding an assertion of $A$ always bring us to this maximum closed reduction?
+(Denial and assertion reversed, too, of course.)
+
+Return to practices of \S\ref{treating}; what aspects of them are at stake here?
+
+\subsection{Meaning} \label{meaning}
+
+Any way of understanding logical constants (or anything else) as getting their meaning from rules on a consequence relation needs some interpretation of the consequence relation in question.
+Using the present interpretation for this purpose, meaning comes out as a matter of assertion and denial conditions.
+This is related to inferentialist views of meaning, but not exactly inferentialist itself, since inference isn't on stage yet.
+
+
+\section{Inference}
+
+What, then, is the connection between an argument's being valid on the one hand, and the act of {\em inferring} on the other?
+\cite{steinberger:wcsrs}, for example, insists on what he calls the {\em principle of answerability:} `[O]nly such deductive systems are permissible as can be seen to be suitably connected to our ordinary deductive inferential practices'.
+Of course Steinberger does not mean that it is {\em immoral} to conduct research into other deductive systems; the permissibility in question here is permissibility for use in inferentialist theories of meaning, which see the meanings of at least the logical constants as deriving from their roles in correct inference.
+
+He uses this principle to argue against the kind of consequence relation considered in \S\ref{consequence} serving as the basis for such an inferentialist theory.
+Indeed, as we've mentioned, the kind of meaning theory we offer in \S\ref{meaning} {\em isn't} exactly inferentialist, although it bears considerable resemblance to inferentialist theories.
+Still, there is room to wonder about the connection between this consequence relation and `our ordinary deductive inferential practices'.
+
+\subsection{Deduction as non-ampliative}
+
+Deductive inference is meant to be, in some sense, {\em non-ampliative}.
+We should not be able to validly deduce our way to things that are not already present in our starting point.
+Exactly what this means, though, is up for grabs.
+We want to offer a reading based on the notion of {\em implicit assertion}.
+The key idea will be this: a deductive inference from $\G$ to $A$ is sanctioned iff any position that asserts everything in $\G$ {\em implicitly asserts} $A$.
+This is one important sense in which $A$ does not go beyond what is already in $\G$.
+
+\subsubsection{Implicit assertion}
+
+Every position $P$ has options.
+A position $Q$ is an {\em option} for a position $P$ iff $P \pcup Q$ is in bounds.
+(The option relation is thus symmetric, and any out-of-bounds position has no options.)
+A position $P$ implicitly asserts $A$ iff it has the same options as the position $P \pcup \pos{A}{}$.
+That is, adding an assertion of $A$ to $P$ wouldn't change the options for $P$.
+
+\subsubsection{The shape of deduction}
+
+What can we show about which deductive inferences are sanctioned on the basis of the structural and operational things we've already established?
+
+
+\subsection{Inference and extensibility}
+
+Above, we've considered only what we could see about deduction while remaining neutral on the issue of extensibility, considered in \S\ref{cut}.
+Here, we show that {\em given extensibility}, the full consequence relation of \S\ref{consequence} turns out to be applicable to deductive inference.\footnote{That is, we show it if it's true! It smells true, though.}
+
+
+\section{Conclusion}
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{cci}
+
+\end{document}
