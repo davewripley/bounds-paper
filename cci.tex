@@ -1,10 +1,13 @@
 \documentclass{article}
+\usepackage{amssymb}
 
 \newcommand{\G}{\ensuremath{\Gamma}}
+\newcommand{\Sig}{\ensuremath{\Sigma}}
 \newcommand{\pcup}{\ensuremath{\sqcup}}
 \newcommand{\pos}[2]{\ensuremath{[#1:#2]}}
 
 \newcommand{\cns}{\vdash}
+\newcommand{\ded}{\Vdash}
 
 \title{From conversation to inference, via consequence}
 \author{Greg Restall and David Ripley\\Universities of Melbourne and Connecticut\\restall@unimelb.edu.au and davewripley@gmail.com}
@@ -69,7 +72,7 @@ This immediately gives a sufficient condition for difference in meaning: if the 
 Since anything whatsoever means the same as itself, this gives us $A \cns A$, for every $A$; it is out of bounds to assert and deny the very same thing, whatever that thing is.
 
 
-\subsubsection{Subpositions}
+\subsubsection{Subpositions} \label{weakening}
 
 Look at ways in which the practices identified in \S\ref{treating} work to ensure that adding to something out of bounds leaves it out of bounds.
 
@@ -106,18 +109,53 @@ Deductive inference is meant to be, in some sense, {\em non-ampliative}.
 We should not be able to validly deduce our way to things that are not already present in our starting point.
 Exactly what this means, though, is up for grabs.
 We want to offer a reading based on the notion of {\em implicit assertion}.
-The key idea will be this: a deductive inference from $\G$ to $A$ is sanctioned iff any position that asserts everything in $\G$ {\em implicitly asserts} $A$.
+The key idea will be this: a inference from $\G$ to $A$ is non-ampliative, and so deductively sanctioned, iff any position that asserts everything in $\G$ {\em implicitly asserts} $A$.
 This is one important sense in which $A$ does not go beyond what is already in $\G$.
+We write `$\G \ded A$' to mean that the inference from $\G$ to $A$ is non-ampliative in this sense.\footnote{This kind of deductive inference is biased towards assertion rather than denial; it has a twin, biased towards denial instead. 
+Just as an assertion may be implicit in a body of other assertions, so may a denial be implicit in a body of other denials. 
+These twins, in turn, are part of a larger family: assertions might be implicit in collections of denials, denials in collections of assertions, and both assertions and denials in collections that combine assertions and denials.
+Here, we explore only the `assertion-assertion' case, leaving the others for other work.}
 
 \subsubsection{Implicit assertion}
+
+Making this idea precise requires a precise notion of implicit assertion itself.
+Here's one.
 
 Every position $P$ has options.
 A position $Q$ is an {\em option} for a position $P$ iff $P \pcup Q$ is in bounds.
 (The option relation is thus symmetric, and any out-of-bounds position has no options.)
 A position $P$ implicitly asserts $A$ iff it has the same options as the position $P \pcup \pos{A}{}$.
 That is, adding an assertion of $A$ to $P$ wouldn't change the options for $P$.
+This is, we think, a natural notion of implicit assertion, and it is the one we will draw on in what follows.\footnote{\label{fn-compact-1}Our notion of non-ampliative inference moves from {\em actually} asserting a set $\G$ of premises to {\em implicitly} asserting a conclusion $A$.
+There is a related notion, which would move from {\em implicitly} asserting each member of $\G$ to implicitly asserting its conclusion.
+These are in general different: there is no guarantee, when an in-bounds position $P$ implicitly asserts each member of $\G$, that $P \pcup \pos{\G}{}$ is in bounds at all, let alone that it has the same options as $P$.
+However, this difference depends on interactions between infinite $\G$ and noncompact bounds; for finite $\G$ or compact bounds the ideas collapse into each other.
+We do not consider this difference further here, except for a comment in footnote \ref{fn-compact-2}.
+}
+
 
 \subsubsection{The shape of deduction}
+
+Here, we explore some aspects of this non-ampliative relation.
+First, it is reflexive: any position that actually asserts $A$ also implicitly asserts it, on the given understanding, and so $A \ded A$. Second, it is monotonic: if $\G \subseteq \G'$, then any position that asserts the $\G'$s also asserts the $\G$s. So if all the latter positions implicitly assert $A$, so do all the former: if $\G \ded A$, then $\G' \ded A$.
+
+Third, it is transitive, in the following sense: if $\G \ded A$, and $\G', A \ded B$, then $\G, \G' \ded B$.\footnote{\label{fn-compact-2}There is a stronger transitivity property sometimes considered that is not guaranteed to hold here: we might have $\G \ded A$ for each $A \in \Sig$ and $\G', \Sig \ded B$ without $\G, \G' \ded \Sig$.
+The issue, as in footnote \ref{fn-compact-1}, has to do with infinite sets (this time $\Sig$) and noncompact bounds; we do not consider it further.
+}
+To see this, suppose the antecedent and consider an arbitrary position $P$ that asserts $\G \cup \G'$.
+Since $\G \ded A$, it must be that $P$ implicitly asserts $A$; it thus has the same options as $Q = P \pcup \pos{A}{}$. 
+But $Q$ asserts $\G'$ and $A$, so since $\G', A \ded B$, it must be that $Q$ implicitly asserts $B$; it thus has the same options as $Q \pcup \pos{B}{}$.
+This means that $P$ has the same options as $Q \pcup \pos{B}{} = P \pcup \pos{A, B}{}$.
+But if $P$ has the same options as $P \pcup \pos{A, B}{}$, it must have the same options as $P \pcup \pos{B}{}$, by the subposition property argued for in \S\ref{weakening}.
+So $P$ implicitly asserts $B$; since $P$ was arbitrary, $\G, \G' \ded B$.
+
+There is an interesting phenomenon visible here: the structural properties of non-ampliative inference do not depend in any straightforward way on the structural properties of bounds consequence.
+We have shown here that $\ded$ is reflexive and monotonic {\em without any appeal at all} to the nature of the bounds themselves.
+Any bounds whatever, even bounds that violate the conditions we've argued for in \S\ref{identity} and \S\ref{weakening}, will yield a $\ded$ that is reflexive and monotonic.
+Similarly, we've shown that $\ded$ is transitive without any appeal to the extensibility condition of \S\ref{cut}; it is instead the {\em subposition} condition of \S\ref{weakening} that matters. [[Note from DR: does it really depend on subposition? I bet so, but haven't proved it yet.]]
+Real caution is needed, then, about seeing a framework like the present one as `monotonic' or not, `transitive' or not, and so on. 
+It is certain relations that do or do not have these properties; $\cns$ and $\ded$ are sensitive to different aspects of the bounds, and so need not exhibit these properties in lockstep with each other.
+
 
 What can we show about which deductive inferences are sanctioned on the basis of the structural and operational things we've already established?
 
