@@ -4,6 +4,8 @@
 \newcommand{\pcup}{\ensuremath{\sqcup}}
 \newcommand{\pos}[2]{\ensuremath{[#1:#2]}}
 
+\newcommand{\cns}{\vdash}
+
 \title{From conversation to inference, via consequence}
 \author{Greg Restall and David Ripley\\Universities of Melbourne and Connecticut\\restall@unimelb.edu.au and davewripley@gmail.com}
 \begin{document}
@@ -44,6 +46,8 @@ Dismissal, reinterpretation, asking for clarification, reductio arguments. Other
 
 [Question from GR: what's the connection between this evaluation and our identification of same-saying? I've used the rhetoric that treating my saying ``$X$'' to say the same thing as your utterance ``$Y$'' is tied up with treating my assertion of ``$X$'' and your denial of ``$Y$'' as being out of bounds---there's no position containing both my assertion and your denial. I think this is a part of what is involved in the treating of things as in bounds and out of bounds, but I'm not sure where in the explanation it might go.]
 
+[[Response from DR: What about flipping it? Asserting $X$ can clash with denying $Y$ even when they don't say the same, but treating an assertion of $X$ as {\em compatible} with a denial of $Y$ is pretty conclusively treating them as meaning something different. Could this go in \S\ref{identity} (newly added)? I'm happy to leave handling this issue to you; I think you've thought more about it.]]
+
 \section{Consequence} \label{consequence}
 
 \subsection{Consequence from bounds}
@@ -57,7 +61,12 @@ This section, then, largely reviews things covered there (and elsewhere).
 
 What can be said without appeal to any particular vocabulary?
 
-Clash between assertion and denial: Identity
+
+\subsubsection{Differences in meaning} \label{identity}
+
+One thing we can say immediately is that assertion and denial of the very same thing clash with each other. 
+This immediately gives a sufficient condition for difference in meaning: if the position that asserts $A$ and denies $B$ is in bounds, then $A$ and $B$ don't mean the same.
+Since anything whatsoever means the same as itself, this gives us $A \cns A$, for every $A$; it is out of bounds to assert and deny the very same thing, whatever that thing is.
 
 
 \subsubsection{Subpositions}
