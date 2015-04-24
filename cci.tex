@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amssymb}
+\usepackage{amssymb, amsthm}
 
 \newcommand{\G}{\ensuremath{\Gamma}}
 \newcommand{\Sig}{\ensuremath{\Sigma}}
@@ -8,6 +8,8 @@
 
 \newcommand{\cns}{\vdash}
 \newcommand{\ded}{\Vdash}
+
+\newtheorem{lem}{Lemma}
 
 \title{From conversation to inference, via consequence}
 \author{Greg Restall and David Ripley\\Universities of Melbourne and Connecticut\\restall@unimelb.edu.au and davewripley@gmail.com}
@@ -92,6 +94,10 @@ Any way of understanding logical constants (or anything else) as getting their m
 Using the present interpretation for this purpose, meaning comes out as a matter of assertion and denial conditions.
 This is related to inferentialist views of meaning, but not exactly inferentialist itself, since inference isn't on stage yet.
 
+\subsubsection{Examples: $\wedge$ and $\neg$} \label{operational}
+
+
+
 
 \section{Inference}
 
@@ -152,18 +158,54 @@ So $P$ implicitly asserts $B$; since $P$ was arbitrary, $\G, \G' \ded B$.
 There is an interesting phenomenon visible here: the structural properties of non-ampliative inference do not depend in any straightforward way on the structural properties of bounds consequence.
 We have shown here that $\ded$ is reflexive and monotonic {\em without any appeal at all} to the nature of the bounds themselves.
 Any bounds whatever, even bounds that violate the conditions we've argued for in \S\ref{identity} and \S\ref{weakening}, will yield a $\ded$ that is reflexive and monotonic.
-Similarly, we've shown that $\ded$ is transitive without any appeal to the extensibility condition of \S\ref{cut}; it is instead the {\em subposition} condition of \S\ref{weakening} that matters. [[Note from DR: does it really depend on subposition? I bet so, but haven't proved it yet.]]
+Similarly, we've shown that $\ded$ is transitive without any appeal to the extensibility condition of \S\ref{cut}; it is instead the {\em subposition} condition of \S\ref{weakening} that matters.\footnote{The subposition condition is indeed needed. Proof of this (if it's true!) goes here.}
 Real caution is needed, then, about seeing a framework like the present one as `monotonic' or not, `transitive' or not, and so on. 
 It is certain relations that do or do not have these properties; $\cns$ and $\ded$ are sensitive to different aspects of the bounds, and so need not exhibit these properties in lockstep with each other.
 
-
-What can we show about which deductive inferences are sanctioned on the basis of the structural and operational things we've already established?
+Similarly, we can explore how the connectives $\wedge$ and $\neg$ considered in \S\ref{operational} relate to $\ded$.
 
 
 \subsection{Inference and extensibility}
 
 Above, we've considered only what we could see about deduction while remaining neutral on the issue of extensibility, considered in \S\ref{cut}.
-Here, we show that {\em given extensibility}, the full consequence relation of \S\ref{consequence} turns out to be applicable to deductive inference.\footnote{That is, we show it if it's true! It smells true, though.}
+But extensibility turns out to matter a great deal for the relation between $\cns$ and $\ded$.
+In fact, given extensibility, they turn out to be the same, at least for arguments with a single conclusion. 
+Here, we show this.
+
+\begin{lem}
+If $\G \ded A$, then $\G \cns A$.
+\end{lem}
+
+\begin{proof}
+Suppose $\G \ded A$. 
+We need to show the position $\pos{\G}{A}$ is out of bounds.
+This position asserts $\G$, so it implicitly asserts $A$. 
+That is, it has the same options as $\pos{\G, A}{A}$.
+But $\pos{\G, A}{A}$ {\em is} out of bounds; it both asserts and denies $A$.
+So the empty position is not an option for it.
+Neither, then, it is an option for $\pos{\G}{A}$; but that is just to say that $\pos{\G}{A}$ is out of bounds.
+\end{proof}
+
+\begin{lem}
+If $\G \cns A$ and the bounds obey extensibility, then $\G \ded A$.
+\end{lem}
+
+\begin{proof}
+Suppose $\G \cns A$, and suppose the bounds obey extensibility.
+Take any position $P$ that asserts $\G$; we need to show that $P$ has the same options as $P \pcup \pos{A}{}$.
+Clearly it has no {\em fewer} options, by the subposition condition; so we need only show that it has no {\em more}.
+Suppose, then, that $\pos{\Sig}{\Theta}$ is an option for $P$.
+Then $P \pcup \pos{\Sig}{\Theta}$ is in bounds.
+By extensibility, either $P \pcup \pos{\Sig, A}{\Theta}$ or $P \pcup \pos{\Sig}{\Theta, A}$ is in bounds.
+But $P \pcup \pos{\Sig}{\Theta, A}$ can't be in bounds: this position asserts $\G$ (since $P$ does) and denies $A$, and we know $\pos{\G}{A}$ is out of bounds.
+By the subposition condition, then, $P \pcup \pos{\Sig}{\Theta, A}$ is also out of bounds.
+So $P \pcup \pos{\Sig, A}{\Theta}$ is in bounds.
+That is, $\pos{\Sig}{\Theta}$ is an option for $P \pcup \pos{A}{}$.
+\end{proof}
+
+Note that this is perfectly general as to what kind of vocabulary is present or absent.
+Whatever shape $\cns$ has, if the bounds obey identity, subposition, and extensibility, this is enough to show that $\ded$ is the single-conclusion fragment of $\cns$.
+
 
 
 \section{Conclusion}
